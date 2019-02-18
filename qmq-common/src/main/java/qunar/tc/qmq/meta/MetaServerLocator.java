@@ -91,7 +91,9 @@ public class MetaServerLocator {
     }
 
     private void closeQuietly(Closeable closeable) {
-        if (closeable == null) return;
+        if (closeable == null) {
+            return;
+        }
         try {
             closeable.close();
         } catch (Exception e) {
