@@ -95,7 +95,9 @@ class MetaInfoClientNettyImpl extends AbstractNettyClient implements MetaInfoCli
     public void sendRequest(final MetaInfoRequest request) {
         try {
             String metaServer = queryMetaServerAddress();
-            if (metaServer == null) return;
+            if (metaServer == null) {
+                return;
+            }
             final Channel channel = getOrCreateChannel(metaServer);
             final Datagram datagram = RemotingBuilder.buildRequestDatagram(CommandCode.CLIENT_REGISTER, new MetaInfoRequestPayloadHolder(request));
             channel.writeAndFlush(datagram).addListener(new ChannelFutureListener() {
@@ -138,8 +140,9 @@ class MetaInfoClientNettyImpl extends AbstractNettyClient implements MetaInfoCli
     private String queryMetaServerAddressWithRetry() {
         for (int i = 0; i < 3; ++i) {
             Optional<String> optional = locator.queryEndpoint();
-            if (optional.isPresent())
+            if (optional.isPresent()) {
                 return optional.get();
+            }
         }
         return null;
     }
