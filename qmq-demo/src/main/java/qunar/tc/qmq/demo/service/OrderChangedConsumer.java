@@ -23,7 +23,7 @@ import qunar.tc.qmq.consumer.annotation.QmqConsumer;
 @Service
 public class OrderChangedConsumer {
 
-    @QmqConsumer(subject = "order.changed", consumerGroup = "ordercenter", executor = "workerExecutor")
+    @QmqConsumer(subject = "transactionRecord.changed", consumerGroup = "ordercenter", executor = "workerExecutor")
     public void onMessage(Message message) {
         long orderId = message.getLongProperty("orderId");
         String name = message.getStringProperty("name");
