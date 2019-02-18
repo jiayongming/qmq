@@ -1,0 +1,40 @@
+appCode: jym_qmq_test
+executor:
+  coreSize: 2
+  maxSize: 2
+  queueSize: 100
+metaServer: http://172.16.192.245:8081/meta/address
+
+
+server:
+  port: 8083
+  context-path: /
+  compression:
+    enabled: true
+    mimeTypes:
+      - text/html
+      - text/xml
+    excludedUserAgents:
+      - gozilla
+      - traviata
+    minResponseSize: 2048
+  tomcat:
+    accesslog:
+      buffered: false
+      enabled: true
+      file-date-format: .yyyy-MM-dd
+      rename-on-rotate: false
+      request-attributes-enabled: false
+      rotate: true
+    maxHttpHeaderSize: 9192
+    maxThreads: 800
+    minSpareThreads: 800
+    maxSpareThreads: 800
+    enableLookups: false
+    redirectPort: 9443
+    acceptCount: 0
+    connectionTimeout: 15000
+    disableUploadTimeout: true
+    uriEncoding: UTF-8
+    useBodyEncodingForURI: true
+    protocol: org.apache.coyote.http11.Http11NioProtocol

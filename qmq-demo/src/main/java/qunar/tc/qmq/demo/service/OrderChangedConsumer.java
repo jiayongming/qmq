@@ -29,5 +29,6 @@ public class OrderChangedConsumer {
         String name = message.getStringProperty("name");
 
         //do work
+        System.out.println(message);
     }
 }
