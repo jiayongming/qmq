@@ -34,7 +34,7 @@ public class OrderService {
     private MessageProducer producer;
 
     public void placeOrder(Order order) {
-        final Message message = producer.generateMessage("transactionRecord.changed");
+        final Message message = producer.generateMessage("jym.transactionRecord.changed");
         message.setProperty("orderId", order.getOrderId());
         message.setProperty("name", order.getName());
         producer.sendMessage(message, new MessageSendStateListener() {
