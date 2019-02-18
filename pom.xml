@@ -427,13 +427,16 @@
         </profile>
     </profiles>
     <distributionManagement>
-        <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
         <repository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+            <id>nexus</id>
+            <name>releases</name>
+            <url>http://mvn.gemantic.com/content/repositories/releases</url>
         </repository>
+
+        <snapshotRepository>
+            <id>nexus</id>
+            <name>snapshots</name>
+            <url>http://mvn.gemantic.com/content/repositories/snapshots</url>
+        </snapshotRepository>
     </distributionManagement>
 </project>

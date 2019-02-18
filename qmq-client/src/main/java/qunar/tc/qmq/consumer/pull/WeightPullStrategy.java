@@ -24,6 +24,7 @@ class WeightPullStrategy implements PullStrategy {
 
     private int currentWeight = MAX_WEIGHT;
 
+    @Override
     public boolean needPull() {
         return randomWeightThreshold() < currentWeight;
     }
@@ -32,6 +33,7 @@ class WeightPullStrategy implements PullStrategy {
         return ThreadLocalRandom.current().nextInt(0, MAX_WEIGHT);
     }
 
+    @Override
     public void record(boolean status) {
         if (status) {
             int weight = currentWeight * 2;
