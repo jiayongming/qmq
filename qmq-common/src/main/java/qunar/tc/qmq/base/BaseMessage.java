@@ -18,11 +18,17 @@ package qunar.tc.qmq.base;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
 import com.google.common.collect.Sets;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 import qunar.tc.qmq.Message;
 import qunar.tc.qmq.utils.RetrySubjectUtils;
 
 import java.io.Serializable;
-import java.util.*;
+import java.util.Collections;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.concurrent.TimeUnit;
 
@@ -416,6 +422,11 @@ public class BaseMessage implements Message, Serializable {
     @Override
     public boolean isDurable() {
         return this.durable;
+    }
+
+    @Override
+    public String toString(){
+        return ReflectionToStringBuilder.toString(this, ToStringStyle.JSON_STYLE);
     }
 
 }
